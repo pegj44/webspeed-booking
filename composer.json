@@ -1,0 +1,32 @@
+{
+  "name": "webspeed/booking",
+  "type": "wordpress-plugin",
+  "authors": [
+    {
+      "name": "Paul Edmund Janubas",
+      "email": "paul@webspeed.co.uk"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable" : true,
+  "autoload": {
+    "psr-4": {
+      "Webspeed\\Booking\\": [
+        "src/"
+      ]
+    },
+    "files": []
+  },
+  "config": {
+    "platform": {
+    }
+  },
+  "require": {
+    "guzzlehttp/guzzle": "^6.3"
+  },
+  "require-dev": {
+    "kint-php/kint": "^3.2",
+    "kint-php/kint-js": "^2.0"
+  },
+  "repositories": []
+}
