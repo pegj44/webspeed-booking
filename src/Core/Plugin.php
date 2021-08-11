@@ -16,15 +16,15 @@ class Plugin
 
 	private function loadCore()
 	{
-		$this->route 	 = new \Webspeed\Booking\Core\Route;
-		$this->module 	 = new \Webspeed\Booking\Core\Module;
-		$this->migration = new \Webspeed\Booking\Core\Migration;
+		\Webspeed\Booking\Application\Helper::loadSrcFile('Application/routes.php');
+		
+		add_action('rest_api_init', ['Webspeed\Booking\Core\Route', 'register_routes']);
 	}
 
 	public function loadApplication()
 	{
-		\Webspeed\Booking\Core\Loader::load('Application/Controllers');
+		// \Webspeed\Booking\Core\Loader::load('Application/Controllers');
 		\Webspeed\Booking\Core\Loader::load('Application/Providers');
-		\Webspeed\Booking\Core\Loader::load('Application/Entities');		
+		// \Webspeed\Booking\Core\Loader::load('Application/Entities');		
 	}
 }

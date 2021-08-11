@@ -1,10 +1,11 @@
 <?php
 
 /**
- * Plugin Name: Webspeed Booking System
+ * Plugin Name: WP Bookings
  * Author: Paul
- * Description: Booking System for HealthHost/Webspeed Clients
+ * Description: Wordpress Booking System
  * version: 1.0.0
+ * Package: wp-bookings
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

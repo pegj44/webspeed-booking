@@ -4,11 +4,6 @@ namespace Webspeed\Booking\Application;
 
 class Helper
 {
-	public function __construct()
-	{
-
-	}
-
 	public static function getSrcFiles(string $path, string $returnType = 'file'): array
 	{		
 		$files = glob( 
