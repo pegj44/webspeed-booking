@@ -2,7 +2,7 @@
 
 namespace Webspeed\Booking\Core;
 
-class Migration
+class Database
 {
 	private static $createTables = [];
 	private static $dropTables = [];
@@ -20,7 +20,7 @@ class Migration
 
 	public function insertTables()
 	{
-		\Webspeed\Booking\Application\Helper::loadSrcFile('Application/Database/insert-migrations.php');
+		\Webspeed\Booking\Application\Helper::loadSrcFile('Application/Database/insert-tables.php');
 
 		if (empty(self::$createTables)) { return; }
 
@@ -46,7 +46,7 @@ class Migration
 
 	public static function dropTables()
 	{
-		\Webspeed\Booking\Application\Helper::loadSrcFile('Application/Database/drop-migrations.php');
+		\Webspeed\Booking\Application\Helper::loadSrcFile('Application/Database/drop-tables.php');
 
 		if (empty(self::$dropTables)) { return; }
 

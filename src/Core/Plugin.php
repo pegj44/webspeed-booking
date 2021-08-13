@@ -11,20 +11,26 @@ class Plugin
 	public function __construct()
 	{
 		$this->loadCore();
-		$this->loadApplication();		
+		$this->loadRoutes();
+		$this->loadApplication();
 	}
 
 	private function loadCore()
 	{
+
+	}
+
+	public function loadRoutes()
+	{
 		\Webspeed\Booking\Application\Helper::loadSrcFile('Application/routes.php');
-		
-		add_action('rest_api_init', ['Webspeed\Booking\Core\Route', 'register_routes']);
+		add_action('rest_api_init', ['Webspeed\Booking\Core\Route', 'registerRoutes']);
 	}
 
 	public function loadApplication()
 	{
-		// \Webspeed\Booking\Core\Loader::load('Application/Controllers');
-		\Webspeed\Booking\Core\Loader::load('Application/Providers');
-		// \Webspeed\Booking\Core\Loader::load('Application/Entities');		
+		\Webspeed\Booking\Application\Helper::loadSrcFile('Application/functions.php');
+		\Webspeed\Booking\Core\Loader::load('Application/Entities');
+		\Webspeed\Booking\Core\Loader::load('Application/UI');
+		\Webspeed\Booking\Core\Loader::load('Application/Requests');
 	}
 }

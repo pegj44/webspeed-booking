@@ -1,0 +1,1 @@
+<a href="<?php echo wp_bookings_admin_url('events', 'add') ?>">Add Event</a><br>

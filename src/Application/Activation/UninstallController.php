@@ -6,7 +6,7 @@ class Uninstall
 {
 	public static function init()
 	{
-		// $query = new \Webspeed\Booking\Core\Migration;
+		// $query = new \Webspeed\Booking\Core\Database;
 		// $query->dropTables();
 	}
 }

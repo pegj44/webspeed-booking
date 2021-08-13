@@ -5,13 +5,15 @@ namespace Webspeed\Booking\Core;
 class Route
 {
 	private static $_instance = null;
+	private static $version = '1';
 	private static $requestRoutes = [];
 	private static $prefix = '';
+	private static $mainPrefix = 'wp-bookings';
 	private static $permissions = [];
 	private static $namespace = 'Webspeed\\Booking\\Application\\Controllers\\';
 
-	public static function register_routes()
-	{
+	public static function registerRoutes()
+	{		
 		foreach (self::$requestRoutes as $route) {
 
 			$callback = explode('@', $route['callback']);
@@ -42,7 +44,7 @@ class Route
 
 		self::$requestRoutes[] = [
 			'method'    => 'POST',
-			'segment'   => self::$prefix . $segment,
+			'segment'   => self::$mainPrefix .'/v'. self::$version . self::$prefix . $segment,
 			'args'      => $args,
 			'namespace' => self::$namespace,
 			'callback'  => $callback,
@@ -60,7 +62,7 @@ class Route
 
 		self::$requestRoutes[] = [
 			'method'    => 'GET',
-			'segment'   => self::$prefix . $segment,
+			'segment'   => self::$mainPrefix .'/v'. self::$version . self::$prefix . $segment,
 			'args'      => $args,
 			'namespace' => self::$namespace,
 			'callback'  => $callback,
@@ -72,11 +74,13 @@ class Route
 
 	public static function group(array $args, callable $function)
 	{		
+		self::$version = (isset($args['version']))? rtrim($args['version'], '/') .'/' : '';
 		self::$prefix = (isset($args['prefix']))? rtrim($args['prefix'], '/') .'/' : '';
 		self::$namespace = (isset($args['namespace']))? $args['namespace'] : self::$namespace;
 
 		call_user_func($function);
 
+		self::$version = '';
 		self::$prefix = '';
 		self::$namespace = '';
 	}
